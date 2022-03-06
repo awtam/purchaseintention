@@ -1,0 +1,5 @@
+select visitor_type, revenue, count(*), 
+round((count(*) * 100.0/sum(count(*)) over(Partition By visitor_type)),2) as percentbyvisitortype 
+from visitors
+group by visitor_type, revenue
+order by visitor_type asc,revenue desc
